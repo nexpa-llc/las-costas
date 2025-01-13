@@ -13,6 +13,7 @@ import { CategoriesService } from './services/categories.service';
 import { SendGridController } from './controllers/send-grid.controller';
 import { ApplicationSchema } from './schemas/application.schema';
 import { SendGridService } from './services/send-grid.service';
+import { PingController } from './controllers/ping.controller';
 
 @Module({
   imports: [
@@ -30,6 +31,7 @@ import { SendGridService } from './services/send-grid.service';
     ItemsController,
     CategoriesController,
     SendGridController,
+    PingController,
   ],
   providers: [PostsService, ItemsService, CategoriesService, SendGridService],
 })
