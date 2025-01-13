@@ -1,0 +1,103 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margin */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin-block-end: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role='list'],
+ol[role='list'] {
+  list-style: none;
+}
+
+/* Set core root defaults */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+  background-color: dimgray;
+  font-family: 'Rubik', sans-serif;
+  color: #333;
+  @apply bg-primary-50;
+  /* transition: color 300ms ease !important;
+  transition: background-color 300ms ease !important;
+  @apply text-primary-600 dark:bg-primary bg-slate-100 dark:text-slate-200; */
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.mex-gradient {
+  background: rgb(118, 7, 10);
+  background: linear-gradient(
+    332deg,
+    rgba(118, 7, 10, 1) 0%,
+    rgba(212, 182, 182, 1) 0%,
+    rgba(242, 238, 237, 1) 30%,
+    rgba(246, 245, 244, 1) 40%,
+    rgba(247, 247, 246, 1) 45%,
+    rgba(248, 248, 247, 1) 50%,
+    rgba(246, 247, 245, 1) 55%,
+    rgba(245, 246, 244, 1) 60%,
+    rgba(242, 244, 242, 1) 70%,
+    rgba(195, 208, 199, 1) 100%,
+    rgba(26, 83, 46, 1) 100%
+  );
+}
