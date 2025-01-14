@@ -72,6 +72,21 @@ deactivate python virtual env
 source .venv/bin/deactivate
 ```
 
-### Todos
+Client:
 
-- Todos are found on notion!
+- Tech Stack: Vite, Vue.js, Vercel
+- Deploy is simple just push to main and vercel will pull latest
+- Vercel takes latest code and builds it using vite (running `npm run build`)
+- It then takes the output directory (dist) and serves it
+- Uses node.js version 22
+- Domain is CNAME record and Vercel gives the record an SSL Certificate
+- Vite prefixed ENV vars are compiled into the dist folder
+
+Server:
+
+- Tech Stack: Node.js, Nest.js AWS
+- Deploy is simple just EC2 with a custom security group (WebServerGroup)
+- The security group allows https traffic to port 3040
+- Port 3040 is where the nest.js app is running
+- I use PM2 to run the nest.js process
+- `npm run build` && `npm run start:prod` both these commands work together to build and start the server
