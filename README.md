@@ -90,5 +90,3 @@ Server:
 - Port 3040 is where the nest.js app is running
 - I use PM2 to run the nest.js process
 - `npm run build` && `npm run start:prod` both these commands work together to build and start the server
-
-dkjks
