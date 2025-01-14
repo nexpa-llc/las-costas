@@ -75,7 +75,7 @@ source .venv/bin/deactivate
 Client:
 
 - Tech Stack: Vite, Vue.js, Vercel
-- Deploy is simple just push to main and vercel will pull latest
+- Deploy is simple just push to main and vercel will pull latest (only if there are changes in client folder)
 - Vercel takes latest code and builds it using vite (running `npm run build`)
 - It then takes the output directory (dist) and serves it
 - Uses node.js version 22
@@ -90,5 +90,3 @@ Server:
 - Port 3040 is where the nest.js app is running
 - I use PM2 to run the nest.js process
 - `npm run build` && `npm run start:prod` both these commands work together to build and start the server
-
-change
