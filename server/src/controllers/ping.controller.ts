@@ -5,7 +5,7 @@ export class PingController {
   @Get()
   async ping() {
     return {
-      message: 'Pong New',
+      message: 'Pong',
       success: true,
       statusCode: 200,
     };
