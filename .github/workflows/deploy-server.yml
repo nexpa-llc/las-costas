@@ -35,7 +35,7 @@ jobs:
         run: scp -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa -r ./* ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:~/las-costas
 
       - name: SSH into EC2
-        run: ssh -o StrictHostKeyChecking=no -i ~/ssh/id_rsa ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}
+        run: ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}
 
       - name: Setup and restart server
         run: cd ~/las-costas && npm run install && npm run build && pm2 restart 0
