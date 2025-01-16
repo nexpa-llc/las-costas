@@ -18,7 +18,8 @@ jobs:
         with:
           node-version: 20
 
-      - run: cd server
+      working-directory: server
+
       - run: ls -la
       - run: npm ci
       - run: npm run build
