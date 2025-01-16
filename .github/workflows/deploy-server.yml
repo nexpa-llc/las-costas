@@ -21,7 +21,6 @@ jobs:
         with:
           node-version: 20
 
-      - run: ls -la
       - run: npm ci
       - run: npm run build
 
