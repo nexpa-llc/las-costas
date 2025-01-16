@@ -11,14 +11,15 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: server
     container:
       image: node:20
     steps:
       - uses: actions/checkout@v3
         with:
           node-version: 20
-
-      working-directory: server
 
       - run: ls -la
       - run: npm ci
