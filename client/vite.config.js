@@ -23,6 +23,10 @@ export default defineConfig({
     proxy: {
       '/api': {
         target: 'http://localhost:3000',
+        rewrite(path) {
+          // remove the /api
+          return path.substring(4);
+        },
       },
     },
   },
