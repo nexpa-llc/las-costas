@@ -19,18 +19,19 @@ jobs:
           node-version: 20
 
       - run: cd server
+      - run: ls -la
       - run: npm ci
       - run: npm run build
 
-      - name: Get SSH Key and set permissions
+      - name: Get SSH key and set permissions
         run: mkdir -p ~/.ssh
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa && chmod 600 ~/.ssh/id_rsa
 
       - name: Copy server code to EC2
         run: scp -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa -r ./* ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:~/las-costas
 
-      - name: ssh into EC2
+      - name: SSH into EC2
         run: ssh -o StrictHostKeyChecking=no -i ~/ssh/id_rsa ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}
 
-      - name: Setup and Restart Server
+      - name: Setup and restart server
         run: cd ~/las-costas && npm run install && npm run build && pm2 restart 0
