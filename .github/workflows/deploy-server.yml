@@ -25,6 +25,9 @@ jobs:
       - run: npm ci
       - run: npm run build
 
+      - name: Clean up folders
+        run: rm -rf dist && rm -rf node_modules
+
       - name: Get SSH key and set permissions
         run: mkdir -p ~/.ssh && echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa && chmod 600 ~/.ssh/id_rsa
 
