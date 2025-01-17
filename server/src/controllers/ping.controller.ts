@@ -5,9 +5,12 @@ export class PingController {
   @Get()
   async ping() {
     return {
-      message: 'Pong',
-      success: true,
       statusCode: 200,
+      success: true,
+      message: 'Pong',
+      data: {
+        version: process.env.npm_package_version,
+      },
     };
   }
 }
