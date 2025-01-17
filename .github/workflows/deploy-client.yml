@@ -1,0 +1,33 @@
+name: Deploy Client
+env:
+  VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+  VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - client/**
+    branches:
+      - main
+      
+jobs:
+  Deploy:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: server
+    container:
+      image: node:20
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          node-version: 20
+          
+      - run: npm ci
+      - run: npm run build
+      
+      - name: Install Vercel CLI
+        run: npm install --global vercel@latest
+        
+      - name: Deploy Project to Vercel
+        run: vercel deploy --prod --token=${{ secrets.VERCEL_TOKEN }}
