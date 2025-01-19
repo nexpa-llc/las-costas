@@ -7,12 +7,14 @@ import childProcess from 'node:child_process';
 
 const exec = promisify(childProcess.exec);
 
-const packageVersion = process.env.npm_package_version;
+const CURRENT_PACKAGE_VERSION = process.env.npm_package_version;
+const VERSION_MESSAGE = 'New Version';
 
 async function runCommand(name, cmd) {
   try {
-    console.log(pc.white(name));
+    console.log(pc.white(`Running ${name}`));
     await exec(cmd);
+    console.log(pc.green(`Success Running ${name}`));
   } catch (error) {
     console.log(pc.red(error.stderr));
     process.exit();
@@ -24,19 +26,19 @@ async function updateVersion() {
     {
       name: 'version',
       type: 'list',
-      message: `The current version is ${packageVersion}, specify the next version:`,
+      message: `The current version is ${CURRENT_PACKAGE_VERSION}, specify the next version:`,
       choices: [
         {
-          name: `Patch ${semver.inc(packageVersion, 'patch')}`,
-          value: semver.inc(packageVersion, 'patch'),
+          name: `Patch ${semver.inc(CURRENT_PACKAGE_VERSION, 'patch')}`,
+          value: semver.inc(CURRENT_PACKAGE_VERSION, 'patch'),
         },
         {
-          name: `Minor ${semver.inc(packageVersion, 'minor')}`,
-          value: semver.inc(packageVersion, 'minor'),
+          name: `Minor ${semver.inc(CURRENT_PACKAGE_VERSION, 'minor')}`,
+          value: semver.inc(CURRENT_PACKAGE_VERSION, 'minor'),
         },
         {
-          name: `Major ${semver.inc(packageVersion, 'major')}`,
-          value: semver.inc(packageVersion, 'major'),
+          name: `Major ${semver.inc(CURRENT_PACKAGE_VERSION, 'major')}`,
+          value: semver.inc(CURRENT_PACKAGE_VERSION, 'major'),
         },
       ],
     },
@@ -44,6 +46,7 @@ async function updateVersion() {
       name: 'message',
       type: 'input',
       message: 'Enter a message:',
+      default: VERSION_MESSAGE,
     },
   ];
 
@@ -73,13 +76,13 @@ async function confirmDeploy() {
 }
 
 async function main() {
-  // await runCommand('Running Linter', 'npm run lint');
-  await runCommand('Running Build', 'npm run build');
+  // await runCommand('Linter', 'npm run lint');
+  await runCommand('Build', 'npm run build');
   await confirmDeploy();
   await updateVersion();
   await runCommand(
     'Pushing version',
-    'git commit -am "New Version" && git push origin master',
+    `git commit -am "${VERSION_MESSAGE}" && git push origin main`,
   );
 }
 
