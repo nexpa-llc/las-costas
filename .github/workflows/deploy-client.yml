@@ -1,4 +1,7 @@
 name: Deploy Client
+env:
+  VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+  VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
 on:
   workflow_dispatch:
   push:
@@ -31,10 +34,14 @@ jobs:
           APP_VERSION=${{ steps.version.outputs.version }} \
           npm run build
 
-      - uses: amondnet/vercel-action@v25
-        with:
-          vercel-token: ${{ secrets.VERCEL_TOKEN }} # Required
-          vercel-args: "--prod" # Optional
-          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }} # Required
-          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }} # Required
-          working-directory: client
+      - name: Install Vercel CLI
+        run: npm install --global vercel@latest
+
+      - name: Pull Vercel Environment Information
+        run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
+
+      - name: Build Project Artifacts
+        run: vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
+
+      - name: Deploy Project Artifacts to Vercel
+        run: vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }}
