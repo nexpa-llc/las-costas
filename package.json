@@ -1,0 +1,16 @@
+{
+  "name": "las-costas",
+  "version": "0.0.1",
+  "private": true,
+  "workspaces": ["client", "server"],
+  "type": "module",
+  "scripts": {
+    "client:release": "node scripts/release.js client",
+    "server:release": "node scripts/release.js server"
+  },
+  "dependencies": {
+    "inquirer": "^12.3.2",
+    "picocolors": "^1.1.1",
+    "semver": "^7.6.3"
+  }
+} 

@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
   push:
     paths:
-      - server/package.json
+      - server/**
     branches:
       - main
 
