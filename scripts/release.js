@@ -46,7 +46,7 @@ async function main() {
   const { version } = await inquirer.prompt(questions);
 
   console.log(pc.white("Updating version"), pc.green(version));
-  await exec(`npm version "${version}" --workspace=${WORKSPACE}"`);
+  await exec(`npm version "${version}" --workspace=${WORKSPACE}`);
 }
 
 main();
