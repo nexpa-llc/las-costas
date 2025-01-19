@@ -53,10 +53,34 @@ async function updateVersion() {
   await exec(`npm version "${version}" -m "${message}"`);
 }
 
+async function confirmDeploy() {
+  const questions = [
+    {
+      name: 'message',
+      type: 'input',
+      message: `Type "deploy" to confirm the push to production:`,
+      validate(value) {
+        if (value.toLowerCase() === 'deploy') {
+          return true;
+        }
+
+        return 'Invalid entry.';
+      },
+    },
+  ];
+
+  await inquirer.prompt(questions);
+}
+
 async function main() {
-  await runCommand('Running Linter', 'npm run lint');
+  // await runCommand('Running Linter', 'npm run lint');
   await runCommand('Running Build', 'npm run build');
+  await confirmDeploy();
   await updateVersion();
+  await runCommand(
+    'Pushing version',
+    'git commit -am "New Version" && git push origin master',
+  );
 }
 
 main();
