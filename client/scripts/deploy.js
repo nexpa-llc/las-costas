@@ -81,7 +81,7 @@ async function main() {
   await confirmDeploy();
   await updateVersion();
   await runCommand(
-    'Pushing version',
+    'Push Version',
     `git commit -am "${VERSION_MESSAGE}" && git push origin main`,
   );
 }
