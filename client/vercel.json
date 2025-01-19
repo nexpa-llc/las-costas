@@ -4,5 +4,8 @@
       "source": "/api/:path*",
       "destination": "https://api.las-costas.xyz/:path*"
     }
-  ]
+  ],
+  "github": {
+    "enabled": false
+  }
 }
