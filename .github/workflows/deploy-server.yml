@@ -34,4 +34,5 @@ jobs:
         run: scp -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa -r ./* ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:~/las-costas
 
       - name: SSH, setup,and restart server
-        run: ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "cd ~/las-costas && npm install && npm run build && pm2 restart 0"
+        run: ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} \
+             "cd ~/las-costas && npm install && npm run build && pm2 restart 0"
