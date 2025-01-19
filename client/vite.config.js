@@ -37,6 +37,6 @@ export default defineConfig({
     },
   },
   define: {
-    __VITE_APP_VERSION__: JSON.stringify(process.env.APP_VERSION || 'dev'),
+    __VITE_APP_VERSION__: JSON.stringify(process.env.npm_package_version),
   },
 });
