@@ -26,7 +26,7 @@ onMounted(async () => {
 
     post.value = response.data;
     post.value.date = formatMongoDate(post.value.date);
-  } catch (e) {
+  } catch {
     useToast('Failed to fetch post details.', { type: 'error' });
   } finally {
     isLoading.value = false;
