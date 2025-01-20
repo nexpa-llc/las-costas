@@ -5,9 +5,7 @@ import { CategoryDocument } from 'src/schemas/category.schema';
 
 @Injectable()
 export class CategoriesService {
-  constructor(
-    @InjectModel('category') private categoryModel: Model<CategoryDocument>,
-  ) {}
+  constructor(@InjectModel('category') private categoryModel: Model<CategoryDocument>) {}
 
   findOneById(id: string): Promise<CategoryDocument> {
     return this.categoryModel.findOne({ _id: id }).exec();
@@ -43,6 +41,7 @@ export class CategoriesService {
       });
     }
 
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-return
     return this.categoryModel.aggregate(pipeline).exec();
   }
 }

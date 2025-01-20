@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /**
  * {
  *  name: {
@@ -6,7 +8,7 @@
  *  brown: 'bru'
  * }
  */
-export function normalizeMatch(match: any, previousKey = ''): any {
+export function normalizeMatch(match: any, previousKey = '') {
   const normalizedMatch = {};
   for (const key in match) {
     const value = match[key];

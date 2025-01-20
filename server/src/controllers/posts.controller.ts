@@ -9,9 +9,7 @@ export class PostsController {
   constructor(private readonly postsService: PostsService) {}
 
   @Get(':id')
-  async findOneById(
-    @Param('id') id: string,
-  ): Promise<SmartResponse<PostDocument>> {
+  async findOneById(@Param('id') id: string): Promise<SmartResponse<PostDocument>> {
     const post = await this.postsService.findOneById(id);
 
     if (!post) {

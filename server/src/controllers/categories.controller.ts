@@ -10,9 +10,7 @@ export class CategoriesController {
   constructor(private readonly categoriesService: CategoriesService) {}
 
   @Get(':id')
-  async findOneById(
-    @Param('id') id: string,
-  ): Promise<SmartResponse<CategoryDocument>> {
+  async findOneById(@Param('id') id: string): Promise<SmartResponse<CategoryDocument>> {
     const category = await this.categoriesService.findOneById(id);
 
     if (!category) {
@@ -34,10 +32,7 @@ export class CategoriesController {
   ): Promise<SmartResponse<CategoryDocument[]>> {
     const normalizedMatch = normalizeMatch(match);
 
-    const categories = await this.categoriesService.findAll(
-      normalizedMatch,
-      include,
-    );
+    const categories = await this.categoriesService.findAll(normalizedMatch, include);
 
     return {
       message: 'Categories found successfully.',

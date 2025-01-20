@@ -1,11 +1,12 @@
-import {
-  ExceptionFilter,
-  Catch,
-  ArgumentsHost,
-  HttpException,
-} from '@nestjs/common';
+import { ExceptionFilter, Catch, ArgumentsHost, HttpException } from '@nestjs/common';
 import { Response } from 'express';
 import { PublicException } from 'src/errors/public-exception';
+import { SmartResponse } from 'src/types/smart-response';
+
+interface ClientData {
+  timestamp: string;
+  stack?: string;
+}
 
 @Catch(HttpException)
 export class HttpExceptionFilter implements ExceptionFilter {
@@ -15,25 +16,27 @@ export class HttpExceptionFilter implements ExceptionFilter {
     const status = exception.getStatus();
     const timestamp = new Date().toISOString();
 
-    const data: any = {
+    const clientResponse: SmartResponse<ClientData> = {
       message: 'Oops! An error occurred.',
       statusCode: status,
       success: false,
-      timestamp,
+      data: {
+        timestamp,
+      },
     };
 
     if (exception instanceof PublicException) {
-      data.message = exception.message;
+      clientResponse.message = exception.message;
     }
 
     if (process.env.NODE_ENV === 'development') {
-      data.message = exception.message;
+      clientResponse.message = exception.message;
 
       if (exception.stack) {
-        data.stack = exception.stack;
+        clientResponse.data.stack = exception.stack;
       }
     }
 
-    response.status(status).json(data);
+    response.status(status).json(clientResponse);
   }
 }

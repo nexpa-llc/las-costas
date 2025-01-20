@@ -1,10 +1,6 @@
 import { Body, Controller, Get, Param, Patch, Query } from '@nestjs/common';
 import { PublicException } from 'src/errors/public-exception';
-import {
-  ItemDocument,
-  ItemMatch,
-  UpdateItemDto,
-} from 'src/schemas/item.schema';
+import { ItemDocument, ItemMatch, UpdateItemDto } from 'src/schemas/item.schema';
 import { ItemsService } from 'src/services/items.service';
 import { SmartResponse } from 'src/types/smart-response';
 import { normalizeMatch } from 'src/utiltiy';
@@ -14,9 +10,7 @@ export class ItemsController {
   constructor(private readonly itemsService: ItemsService) {}
 
   @Get(':id')
-  async findOneById(
-    @Param('id') id: string,
-  ): Promise<SmartResponse<ItemDocument>> {
+  async findOneById(@Param('id') id: string): Promise<SmartResponse<ItemDocument>> {
     const item = await this.itemsService.findOneById(id);
 
     if (!item) {
