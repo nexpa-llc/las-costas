@@ -31,7 +31,7 @@ async function signup() {
         type: 'success',
       });
     }
-  } catch (err) {
+  } catch {
     useToast('Error subscribing to El Andariego.', { type: 'error' });
   } finally {
     form.value.reset();

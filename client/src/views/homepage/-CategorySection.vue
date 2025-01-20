@@ -31,7 +31,7 @@ onMounted(async () => {
     );
 
     categories.value.sort((a, b) => a.priority - b.priority);
-  } catch (_) {
+  } catch {
     useToast('Failed to fetch categories.', {
       type: 'error',
     });

@@ -45,7 +45,7 @@ onMounted(async () => {
     platillos.value = response.data.filter((el) => el.name === 'Platillos')[0];
     categories.value = response.data.filter((el) => el.name !== 'Platillos');
     chosenCategory.value = categories.value[0];
-  } catch (e) {
+  } catch {
     useToast('Failed to fetch items.', { type: 'error' });
   } finally {
     stopOverlay();

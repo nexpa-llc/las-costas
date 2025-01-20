@@ -29,7 +29,7 @@ onMounted(async () => {
     });
 
     platillos.value = response.data?.[0].items || [];
-  } catch (_) {
+  } catch {
     useToast('Failed to fetch platillos.', {
       type: 'error',
     });
@@ -62,7 +62,7 @@ async function toggleLiked(index) {
     });
 
     platillos.value[index] = response.data.data;
-  } catch (e) {
+  } catch {
     useToast('Failed to update platillo.', { type: 'error' });
   }
 }
