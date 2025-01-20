@@ -38,6 +38,7 @@ export class ItemsService {
       });
     }
 
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-return
     return this.itemModel.aggregate(pipeline).exec();
   }
 

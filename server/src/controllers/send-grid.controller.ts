@@ -1,10 +1,7 @@
 import { Body, Controller, Post } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import {
-  ApplicationDocument,
-  ApplicationDto,
-} from 'src/schemas/application.schema';
+import { ApplicationDocument, ApplicationDto } from 'src/schemas/application.schema';
 import { SendGridService } from 'src/services/send-grid.service';
 import { SmartResponse } from 'src/types/smart-response';
 
@@ -55,7 +52,7 @@ export class SendGridController {
         statusCode: 201,
         data: applicationDoc,
       };
-    } catch (err) {
+    } catch {
       return {
         message: 'Email was not sent successfully.',
         success: false,
@@ -76,7 +73,7 @@ export class SendGridController {
         statusCode: 200,
         data: null,
       };
-    } catch (err) {
+    } catch {
       return {
         message: 'Unable to subscribe.',
         success: false,

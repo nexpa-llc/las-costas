@@ -10,10 +10,7 @@ export class SendGridService {
     SendGridClient.setApiKey(process.env.SEND_GRID_API);
   }
 
-  async sendEmail(
-    data: MailDataRequired | MailDataRequired[],
-    isMultiple?: boolean,
-  ) {
+  async sendEmail(data: MailDataRequired | MailDataRequired[], isMultiple?: boolean) {
     return await SendGridEmail.send(data, isMultiple);
   }
 
