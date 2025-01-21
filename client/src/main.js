@@ -7,8 +7,6 @@ import App from './App.vue';
 import router from './router';
 import en from '@/locales/en.js';
 import es from '@/locales/es.js';
-import DefaultLayout from '@/layouts/DefaultLayout.vue';
-import BlankLayout from '@/layouts/BlankLayout.vue';
 
 import '@/assets/index.css';
 
@@ -29,8 +27,6 @@ const i18n = createI18n({
 app.use(router);
 app.use(head);
 app.use(i18n);
-
-app.component('DefaultLayout', DefaultLayout).component('BlankLayout', BlankLayout);
 
 router.isReady().then(() => {
   app.mount('#app');
