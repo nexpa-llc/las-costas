@@ -7,7 +7,7 @@ const message = ref('');
 async function fetchApi() {
   const res = await smartFetch({
     method: 'GET',
-    url: '/api/ping',
+    url: '/api/ping/db',
   });
 
   message.value = res.message;

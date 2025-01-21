@@ -2,13 +2,13 @@ import { fileURLToPath, URL } from 'node:url';
 import { defineConfig } from 'vite';
 import path from 'path';
 import vue from '@vitejs/plugin-vue';
-import VueI18nPlugin from '@intlify/unplugin-vue-i18n/vite';
+import i18nPlugin from '@intlify/unplugin-vue-i18n/vite';
 import svgLoader from 'vite-svg-loader';
 
 export default defineConfig({
   plugins: [
     vue(),
-    VueI18nPlugin({
+    i18nPlugin({
       // eslint-disable-next-line no-undef
       include: path.resolve(__dirname, './src/locales/**'),
     }),
