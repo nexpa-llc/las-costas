@@ -23,6 +23,12 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: "Set env variables"
+        run: |
+          touch .env
+          echo NODE_ENV=production >> .env
+          echo MONGO_URI=${{ secrets.MONGO_URI }} >> .env
+
       - name: Build project
         run: npm run build
 

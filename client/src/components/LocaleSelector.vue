@@ -26,8 +26,9 @@ function setLocale(value) {
       <span
         class="underline-offset-2 group-hover:underline"
         :class="{ 'font-semibold text-secondary': isEsLocale }"
-        >Español</span
       >
+        Español
+      </span>
     </button>
     <div class="divider divider-horizontal" />
     <button class="group flex items-center gap-2" type="button" @click="setLocale('en')">
