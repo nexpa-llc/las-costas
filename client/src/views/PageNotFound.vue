@@ -6,11 +6,11 @@ import { useI18n } from 'vue-i18n';
 const { t } = useI18n({ useScope: 'global' });
 
 useHead({
-  title: 'Page Not Found | El Andariego',
+  title: 'Page Not Found | Las Costas',
   meta: [
     {
       name: 'description',
-      content: 'Page Not Found El Andariego',
+      content: 'Page Not Found Las Costas',
     },
   ],
 });

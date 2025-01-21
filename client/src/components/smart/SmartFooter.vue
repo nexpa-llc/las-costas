@@ -39,7 +39,7 @@ const { socialLinks, routeLinks } = useSmartLinks();
       </div>
     </div>
     <div class="flex flex-col gap-3 md:order-first">
-      <h5 class="mb-3 font-semibold">El Andariego</h5>
+      <h5 class="mb-3 font-semibold">Las Costas</h5>
       <div class="flex gap-4 text-base lg:text-lg">
         <a v-for="link in socialLinks" :key="link.name" :href="link.url" target="_blank">
           <SmartSvg :src="link.icon" />
@@ -50,7 +50,7 @@ const { socialLinks, routeLinks } = useSmartLinks();
         <p>
           Copyright ©
           <span>{{ year }}</span>
-          by El Andariego. All rights reserved.
+          by Las Costas. All rights reserved.
         </p>
       </div>
     </div>
