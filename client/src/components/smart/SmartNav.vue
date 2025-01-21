@@ -60,15 +60,11 @@ watch(showOffCanvas, (value) => {
         {{ t('link.call') }}
       </a>
     </div>
-    <button
-      class="hamburger hamburger--squeeze lg:!hidden"
-      :class="{ 'is-active': showOffCanvas }"
-      type="button"
-      @click="showOffCanvas = !showOffCanvas"
-    >
-      <span class="hamburger-box">
-        <span class="hamburger-inner"></span>
-      </span>
+    <button class="lg:!hidden" type="button" @click="showOffCanvas = !showOffCanvas">
+      <SmartTransition mode="out-in">
+        <SmartSvg v-if="showOffCanvas" src="x" />
+        <SmartSvg v-else src="bars" />
+      </SmartTransition>
     </button>
     <Teleport to="body">
       <SmartTransition name="slide-from-right">
@@ -109,8 +105,6 @@ watch(showOffCanvas, (value) => {
 </template>
 
 <style lang="scss" scoped>
-@import '@/assets/hamburgers.scss';
-
 a {
   transition: all 150ms linear;
 }

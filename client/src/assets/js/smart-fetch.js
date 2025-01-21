@@ -1,5 +1,5 @@
-import { useToast } from '@/composables/toast';
 import * as qs from 'qs';
+import { toast } from '@/assets/js/toast';
 
 export async function smartFetch({
   url = null,
@@ -27,14 +27,14 @@ export async function smartFetch({
 
   if (response.ok) {
     if (notifyOnSuccess) {
-      useToast(jsonData.message, {
+      toast(jsonData.message, {
         type: 'success',
       });
     }
   } else {
     // todo: analytics, log, etc...
     if (notifyOnFailure) {
-      useToast(jsonData.message, {
+      toast(jsonData.message, {
         type: 'error',
       });
     }
