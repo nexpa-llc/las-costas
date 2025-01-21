@@ -2,17 +2,18 @@
 import { ref, watch } from 'vue';
 import { useRoute } from 'vue-router';
 import { useI18n } from 'vue-i18n';
-import { useSmartLinks } from '@/composables/smart-links';
 import { useWindowScroll, useWindowSize } from '@vueuse/core';
 import SmartTransition from '@/components/smart/SmartTransition.vue';
 import LocaleSelector from '@/components/LocaleSelector.vue';
-import SocialLinks from '@/components/SocialLinks.vue';
+import SmartSvg from './SmartSvg.vue';
+import { useSmartLinks } from '@/composables/smart-links';
 
 const { t } = useI18n({ useScope: 'global' });
-const navLinks = useSmartLinks();
 
 const showOffCanvas = ref(false);
 const route = useRoute();
+
+const { socialLinks, routeLinks } = useSmartLinks();
 const { width: windowWidth } = useWindowSize();
 const { y: scrollY } = useWindowScroll();
 
@@ -32,7 +33,7 @@ watch(showOffCanvas, (value) => {
 </script>
 <template>
   <div
-    class="sticky inset-x-0 top-0 z-40 mx-auto flex h-[60px] content-center items-center justify-between bg-primary-50 px-4 transition-all lg:h-[68px] lg:px-8 xl:px-12"
+    class="bg-primary-50 sticky inset-x-0 top-0 z-40 mx-auto flex h-[60px] content-center items-center justify-between px-4 transition-all lg:h-[68px] lg:px-8 xl:px-12"
     :class="{ 'shadow-md': scrollY > 0 }"
   >
     <RouterLink class="lg:ml-7" to="/">
@@ -46,15 +47,15 @@ watch(showOffCanvas, (value) => {
       class="invisible hidden text-lg font-semibold lg:visible lg:flex lg:content-center lg:items-center lg:gap-8"
     >
       <RouterLink
-        v-for="link in navLinks"
+        v-for="link in routeLinks"
         :key="link.name"
         :to="link.to"
         class="hover:text-primary"
+        active-class="text-primary underline underline-offset-2"
       >
-        <span :class="{ 'text-primary underline underline-offset-2': link.isActive }">
-          {{ link.name }}
-        </span>
+        {{ link.name }}
       </RouterLink>
+
       <a href="tel:9498060123" class="btn btn-primary">
         {{ t('link.call') }}
       </a>
@@ -73,22 +74,29 @@ watch(showOffCanvas, (value) => {
       <SmartTransition name="slide-from-right">
         <div
           v-if="showOffCanvas"
-          class="fixed bottom-0 left-0 top-[60px] z-40 h-screen w-screen overflow-scroll bg-primary-50"
+          class="bg-primary-50 fixed bottom-0 left-0 top-[60px] z-40 h-screen w-screen overflow-scroll"
         >
           <div class="mt-12 flex flex-col items-center gap-9 text-center font-semibold">
             <RouterLink
-              v-for="link in navLinks"
+              v-for="link in routeLinks"
               :key="link.name"
               :to="link.to"
               class="text-3xl hover:text-primary"
+              active-class="text-primary underline underline-offset-2"
             >
-              <span
-                :class="{ 'text-primary underline underline-offset-2': link.isActive }"
-              >
-                {{ link.name }}
-              </span>
+              {{ link.name }}
             </RouterLink>
-            <SocialLinks class="flex justify-center gap-6 text-3xl" />
+
+            <div class="flex justify-center gap-6 text-3xl">
+              <a
+                v-for="link in socialLinks"
+                :key="link.name"
+                :href="link.url"
+                target="_blank"
+              >
+                <SmartSvg :src="link.icon" />
+              </a>
+            </div>
             <a href="tel:9498060123" class="btn btn-primary btn-lg mb-3 text-3xl">
               {{ t('link.call') }}
             </a>

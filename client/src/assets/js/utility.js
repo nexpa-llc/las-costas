@@ -18,3 +18,9 @@ export function prettyContent(content = [], locale) {
   const index = res.lastIndexOf(',');
   return res.slice(0, index + 1) + separator + res.slice(index + 1);
 }
+
+export function log(...message) {
+  if (import.meta.env.VITE_ENV === 'development') {
+    console.log(...message);
+  }
+}

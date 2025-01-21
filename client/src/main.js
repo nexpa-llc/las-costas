@@ -10,16 +10,9 @@ import en from '@/locales/en.js';
 import es from '@/locales/es.js';
 import DefaultLayout from '@/layouts/DefaultLayout.vue';
 import BlankLayout from '@/layouts/BlankLayout.vue';
-import InfoIcon from '@/components/svgs/icons/InfoIcon.vue';
-import SuccessIcon from '@/components/svgs/icons/SuccessIcon.vue';
-import WarningIcon from '@/components/svgs/icons/WarningIcon.vue';
-import ErrorIcon from '@/components/svgs/icons/ErrorIcon.vue';
-import FoodIcon from '@/components/svgs/icons/FoodIcon.vue';
-import PlateIcon from '@/components/svgs/icons/PlateIcon.vue';
 
 import '@/assets/index.css';
 import 'vue-toastification/dist/index.css';
-import '@/assets/overrides.css';
 
 localStorage.setItem('version', __VITE_APP_VERSION__);
 
@@ -50,15 +43,7 @@ app.use(router);
 app.use(head);
 app.use(i18n);
 
-app
-  .component('DefaultLayout', DefaultLayout)
-  .component('BlankLayout', BlankLayout)
-  .component('InfoIcon', InfoIcon)
-  .component('SuccessIcon', SuccessIcon)
-  .component('WarningIcon', WarningIcon)
-  .component('ErrorIcon', ErrorIcon)
-  .component('FoodIcon', FoodIcon)
-  .component('PlateIcon', PlateIcon);
+app.component('DefaultLayout', DefaultLayout).component('BlankLayout', BlankLayout);
 
 router.isReady().then(() => {
   app.mount('#app');

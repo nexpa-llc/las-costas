@@ -1,37 +1,47 @@
-import { ref, watchEffect } from 'vue';
 import { useI18n } from 'vue-i18n';
-import { useRoute } from 'vue-router';
 
 export function useSmartLinks() {
   const { t } = useI18n({ useScope: 'global' });
-  const route = useRoute();
 
-  const links = ref([]);
+  const routeLinks = [
+    {
+      name: t('link.home'),
+      to: '/',
+    },
+    {
+      name: t('link.menu'),
+      to: '/menu',
+    },
+    {
+      name: 'Blog',
+      to: '/blog',
+    },
+    {
+      name: t('link.contact'),
+      to: '/contact',
+    },
+  ];
 
-  watchEffect(() => {
-    links.value = [
-      {
-        name: t('link.home'),
-        to: '/',
-        isActive: route.fullPath === '/',
-      },
-      {
-        name: t('link.menu'),
-        to: '/menu',
-        isActive: route.name === 'Menu',
-      },
-      {
-        name: 'Blog',
-        to: '/blog',
-        isActive: route.fullPath === '/blog',
-      },
-      {
-        name: t('link.contact'),
-        to: '/contact',
-        isActive: route.fullPath === '/contact',
-      },
-    ];
-  });
+  const socialLinks = [
+    {
+      url: 'https://www.facebook.com/profile.php?id=100082710796984',
+      name: 'Facebook',
+      icon: 'facebook',
+    },
+    {
+      url: 'https://instagram.com/el_andariegotruck',
+      name: 'Instagram',
+      icon: 'instagram',
+    },
+    {
+      url: 'https://g.page/r/CY53oo_JlDb8EAI/review',
+      name: 'Google',
+      icon: 'google',
+    },
+  ];
 
-  return links;
+  return {
+    socialLinks,
+    routeLinks,
+  };
 }

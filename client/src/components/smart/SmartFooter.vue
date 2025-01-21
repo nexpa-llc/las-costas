@@ -1,11 +1,12 @@
 <script setup>
 import { useI18n } from 'vue-i18n';
+import SmartSvg from './SmartSvg.vue';
 import { useSmartLinks } from '@/composables/smart-links';
-import SocialLinks from '@/components/SocialLinks.vue';
 
 const year = new Date().getFullYear();
 const { t } = useI18n({ useScope: 'global' });
-const navLinks = useSmartLinks();
+
+const { socialLinks, routeLinks } = useSmartLinks();
 </script>
 
 <template>
@@ -17,21 +18,20 @@ const navLinks = useSmartLinks();
       <h5 class="mb-3 font-semibold">{{ t('footer.navigation') }}</h5>
       <div class="flex flex-col items-start gap-1 lg:text-base">
         <RouterLink
-          v-for="link in navLinks"
+          v-for="link in routeLinks"
           :key="link.name"
           :to="link.to"
           class="hover:text-primary"
+          active-class="text-primary underline underline-offset-2"
         >
-          <span :class="{ 'text-primary underline underline-offset-2': link.isActive }">
-            {{ link.name }}
-          </span>
+          {{ link.name }}
         </RouterLink>
       </div>
     </div>
     <div class="flex flex-col gap-3">
       <h5 class="mb-3 font-semibold">{{ t('footer.information') }}</h5>
       <div class="flex flex-col items-start gap-1 lg:text-base">
-        <a href="tel:9498060123" class="cursor-pointer"> (949) 806-0123 </a>
+        <a href="tel:9498060123" class="cursor-pointer">(949) 806-0123</a>
         <RouterLink to="/contact">
           {{ t('footer.careers') }}
         </RouterLink>
@@ -40,7 +40,11 @@ const navLinks = useSmartLinks();
     </div>
     <div class="flex flex-col gap-3 md:order-first">
       <h5 class="mb-3 font-semibold">El Andariego</h5>
-      <SocialLinks class="flex gap-4 text-base lg:text-lg" />
+      <div class="flex gap-4 text-base lg:text-lg">
+        <a v-for="link in socialLinks" :key="link.name" :href="link.url" target="_blank">
+          <SmartSvg :src="link.icon" />
+        </a>
+      </div>
       <!-- Had to do it this way not sure why -->
       <div class="flex grow items-end text-xs sm:w-4/5">
         <p>

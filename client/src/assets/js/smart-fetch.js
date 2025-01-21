@@ -1,7 +1,7 @@
-import { useToast } from './toast';
+import { useToast } from '@/composables/toast';
 import * as qs from 'qs';
 
-export async function useSmartFetch({
+export async function smartFetch({
   url = null,
   method = 'GET',
   params = null,
