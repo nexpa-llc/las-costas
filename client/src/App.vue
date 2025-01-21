@@ -1,27 +1,21 @@
 <script setup>
-import { onMounted, ref } from 'vue';
-import { useSmartFetch } from './composables/smart-fetch';
-
-const message = ref('');
-
-async function fetchApi() {
-  const res = await useSmartFetch({
-    method: 'GET',
-    url: '/api/ping',
-  });
-
-  message.value = res.message;
-}
-
-onMounted(() => {
-  fetchApi();
-});
+import { RouterView } from 'vue-router';
+import SmartTransition from './components/smart/SmartTransition.vue';
+import SmartFooter from './components/smart/SmartFooter.vue';
+import SmartNav from './components/smart/SmartNav.vue';
 </script>
 
 <template>
-  <div class="flex h-svh flex-col items-center justify-center gap-5">
-    <span> LAS COSTAS </span>
-    <span v-if="message"> API MESSAGE: {{ message }} </span>
+  <div>
+    <SmartNav />
+
+    <RouterView v-slot="{ Component }" class="router-view">
+      <SmartTransition name="fade" mode="out-in">
+        <component :is="Component" />
+      </SmartTransition>
+    </RouterView>
+
+    <SmartFooter />
   </div>
 </template>
 
