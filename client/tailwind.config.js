@@ -47,8 +47,6 @@ export default {
   },
   plugins: [daisyui],
   daisyui: {
-    base: false,
-    logs: false,
     themes: [
       {
         mytheme: {
