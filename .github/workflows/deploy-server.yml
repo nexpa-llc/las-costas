@@ -1,4 +1,6 @@
 name: Deploy Server
+env:
+  MONGO_URI: ${{ secrets.MONGO_URI }}
 on:
   workflow_dispatch:
   push:
@@ -33,7 +35,7 @@ jobs:
         run: |
           touch .env
           echo NODE_ENV=production >> .env
-          echo MONGO_URI=dkljadf >> .env
+          echo MONGO_URI=$MONGO_URI >> .env
 
       - name: Get SSH key and set permissions
         run: mkdir -p ~/.ssh && echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa && chmod 600 ~/.ssh/id_rsa
