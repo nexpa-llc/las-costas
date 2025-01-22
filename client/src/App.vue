@@ -1,21 +1,22 @@
 <script setup>
-import { RouterView } from 'vue-router';
+import { RouterView, useRoute } from 'vue-router';
+import { computed } from 'vue';
+import DefaultLayout from './layouts/DefaultLayout.vue';
 import SmartTransition from './components/smart/SmartTransition.vue';
-import SmartFooter from './components/smart/SmartFooter.vue';
-import SmartNav from './components/smart/SmartNav.vue';
+
+const route = useRoute();
+const layoutComponent = computed(() => route.meta.layout || DefaultLayout);
 </script>
 
 <template>
   <div>
-    <SmartNav />
-
-    <RouterView v-slot="{ Component }" class="router-view">
-      <SmartTransition name="fade" mode="out-in">
-        <component :is="Component" />
-      </SmartTransition>
-    </RouterView>
-
-    <SmartFooter />
+    <SmartTransition name="fade" mode="out-in">
+      <component :is="layoutComponent">
+        <RouterView v-slot="{ Component }" class="router-view">
+          <component :is="Component" />
+        </RouterView>
+      </component>
+    </SmartTransition>
   </div>
 </template>
 
