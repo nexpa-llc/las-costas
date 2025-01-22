@@ -33,7 +33,7 @@ jobs:
         run: |
           touch .env
           echo NODE_ENV=production >> .env
-          echo MONGO_URI=${{ secrets.MONGO_URI }} >> .env
+          echo MONGO_URI=dkljadf >> .env
 
       - name: Get SSH key and set permissions
         run: mkdir -p ~/.ssh && echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa && chmod 600 ~/.ssh/id_rsa
