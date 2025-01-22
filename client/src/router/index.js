@@ -1,5 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router';
 
+import DefaultLayout from '@/layouts/DefaultLayout.vue';
+import BlankLayout from '@/layouts/BlankLayout.vue';
+
 const HomePage = () => import('@/views/HomePage.vue');
 const PageNotFound = () => import('@/views/PageNotFound.vue');
 
@@ -8,14 +11,17 @@ const routes = [
     path: '/',
     name: 'HomePage',
     component: HomePage,
+    meta: {
+      layout: DefaultLayout,
+    },
   },
   {
     path: '/:pathMatch(.*)*',
     name: 'PageNotFound',
-    meta: {
-      layout: 'BlankLayout',
-    },
     component: PageNotFound,
+    meta: {
+      layout: BlankLayout,
+    },
   },
 ];
 
