@@ -1,92 +1,80 @@
-## El Andariego
+## Las Costas
 
 ### Preview
 
 ![Homepage](assets/homepage.jpg)
 
-### Repository Requirements
+## Information
 
-- nodejs (https://nodejs.org/en/download/package-manager)
-- nvm (https://github.com/nvm-sh/nvm)
-- python3 (https://www.python.org/downloads)
-- mongodb compass (https://www.mongodb.com/try/download/shell)
-- railway cli (https://docs.railway.app/guides/cli)
-
-### Client Setup
-
-Enter client directory
-
-```
-cd client
-```
-
-Install required node dependencies
-
-```
-npm install
-```
-
-Run client server (this runs on port 8080)
-
-```
-npm run dev
-```
-
-### Server Setup
-
-Enter client directory
-
-```
-cd server
-```
-
-Install required node dependencies
-
-```
-npm install
-```
-
-Run client server (this runs on port 3080)
-
-```
-npm run dev
-```
-
-### Deployment
-
-Activate python virtual env
-
-```
-source .venv/bin/activate
-```
-
-Run deploy script (follow instructions on screen)
-
-```
-python3 deploy.py
-```
-
-deactivate python virtual env
-
-```
-source .venv/bin/deactivate
-```
-
-Client:
-
+### Client
 - Tech Stack: Vite, Vue.js, Vercel
-- Deploy is simple just push to main and vercel will pull latest (only if there are changes in client folder)
+- Deploy is simple just push to main and vercel will pull latest
 - Vercel takes latest code and builds it using vite (running `npm run build`)
 - It then takes the output directory (dist) and serves it
 - Uses node.js version 22
-- Domain is CNAME record and Vercel gives the record an SSL Certificate
+- Domain is CNAME record and Vercel gives the record an SSL Certificate (so does cloudflare)
 - Vite prefixed ENV vars are compiled into the dist folder
 
-Server:
-
+### Server
 - Tech Stack: Node.js, Nest.js AWS
 - Deploy is simple just EC2 with a custom security group (WebServerGroup)
 - The security group allows https traffic to port 3040
 - Port 3040 is where the nest.js app is running
 - I use PM2 to run the nest.js process
 - `npm run build` && `npm run start:prod` both these commands work together to build and start the server
+- Nginx acts as a reverse proxy to port 3040
+- Any nginx errors are logged here:
+```
+error_log /var/log/nginx/costas_error.log;
+access_log /var/log/nginx/costas_access.log;
+```
+
+## Deployment
+
+### Client
+1. Create pull request
+2. Review code
+3. Merge to main branch
+4. Github action runs and pushes to vercel
+
+### Server
+1. Create pull request
+2. Review code
+3. Merge to main branch
+4. Github action runs and pushes to prod EC2
+
+## Setup
+
+### Client
+#### Requirements
+- [Node.js](https://nodejs.org/en/download)
+- [nvm](https://github.com/nvm-sh/nvm)
+
+Install required dependencies
+
+```
+npm install
+```
+
+Run client-server (port: 8080)
+
+```
+npm run dev
+```
+
+### Server
+#### Requirements
+- [Node.js](https://nodejs.org/en/download)
+- [nvm](https://github.com/nvm-sh/nvm)
+
+Install required dependencies
+
+```
+npm install
+```
+
+Run client-server (port: 8000)
+
+```
+npm run start:dev
+```
