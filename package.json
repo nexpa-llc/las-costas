@@ -9,8 +9,8 @@
     "server:release": "node scripts/release.js server"
   },
   "dependencies": {
-    "inquirer": "^12.3.2",
+    "inquirer": "^12.5.0",
     "picocolors": "^1.1.1",
-    "semver": "^7.6.3"
+    "semver": "^7.7.1"
   }
 } 
