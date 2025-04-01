@@ -60,7 +60,7 @@ watch(showOffCanvas, (value) => {
         {{ t('link.call') }}
       </a>
     </div>
-    <button class="lg:!hidden" type="button" @click="showOffCanvas = !showOffCanvas">
+    <button class="lg:hidden!" type="button" @click="showOffCanvas = !showOffCanvas">
       <SmartTransition mode="out-in">
         <SmartSvg v-if="showOffCanvas" src="x" />
         <SmartSvg v-else src="bars" />
