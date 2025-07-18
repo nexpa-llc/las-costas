@@ -2,7 +2,9 @@
   <div>
     <div class="flex flex-col items-center justify-center gap-5">
       <div class="py-3">
-        <div class="font-londrina pb-6 text-center text-6xl tracking-wide">
+        <div
+          class="font-londrina from-primary to-secondary bg-linear-to-r via-white bg-clip-text pb-6 text-center text-6xl font-extrabold tracking-wide text-transparent"
+        >
           <p>BIENVENIDO</p>
           <p>WELCOME</p>
         </div>
