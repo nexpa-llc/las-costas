@@ -6,14 +6,48 @@ import { useWindowScroll, useWindowSize } from '@vueuse/core';
 import SmartTransition from '@/components/smart/SmartTransition.vue';
 import LocaleSelector from '@/components/LocaleSelector.vue';
 import SmartSvg from './SmartSvg.vue';
-import { useSmartLinks } from '@/composables/smart-links';
+import { SOCIAL_LINKS } from '@/assets/constants/links';
+
+const NAV_LINKS = [
+  {
+    to: '/#menu-1',
+    name: 'Antojitos Mexicanos',
+  },
+  {
+    to: '/#menu-1',
+    name: 'Mariscos',
+  },
+  {
+    to: '/#menu-1',
+    name: 'Caldos',
+  },
+  {
+    to: '/#menu-2',
+    name: 'Platillos',
+  },
+  {
+    to: '/#menu-2',
+    name: 'Desayunos',
+  },
+  {
+    to: '/#menu-3',
+    name: 'Postres',
+  },
+  {
+    to: '/#menu-3',
+    name: 'Niños',
+  },
+  {
+    to: '/#menu-3',
+    name: 'Drinks',
+  },
+];
 
 const { t } = useI18n({ useScope: 'global' });
 
 const showOffCanvas = ref(false);
 const route = useRoute();
 
-const { socialLinks, routeLinks } = useSmartLinks();
 const { width: windowWidth } = useWindowSize();
 const { y: scrollY } = useWindowScroll();
 
@@ -55,20 +89,19 @@ watch(showOffCanvas, (value) => {
           v-if="showOffCanvas"
           class="bg-base-100/80 fixed top-[60px] bottom-0 left-0 z-40 h-screen w-screen overflow-scroll backdrop-blur-sm"
         >
-          <div class="mt-12 flex flex-col items-center gap-9 text-center font-semibold">
+          <div class="mt-8 flex flex-col items-center gap-4 text-center font-semibold">
             <RouterLink
-              v-for="link in routeLinks"
+              v-for="link in NAV_LINKS"
               :key="link.name"
               :to="link.to"
-              class="hover:text-primary text-3xl"
-              active-class="text-primary underline underline-offset-2"
+              class="hover:text-primary text-2xl underline"
             >
               {{ link.name }}
             </RouterLink>
 
-            <div class="flex justify-center gap-6 text-3xl">
+            <div class="flex justify-center gap-6 text-2xl">
               <a
-                v-for="link in socialLinks"
+                v-for="link in SOCIAL_LINKS"
                 :key="link.name"
                 :href="link.url"
                 target="_blank"
@@ -76,9 +109,11 @@ watch(showOffCanvas, (value) => {
                 <SmartSvg :src="link.icon" />
               </a>
             </div>
-            <a href="tel:9495031324" class="btn btn-primary btn-lg mb-3 text-3xl">
+
+            <a href="tel:9495031324" class="btn btn-primary mb-3 text-2xl">
               {{ t('link.call') }}
             </a>
+
             <LocaleSelector class="-ms-1 text-xl" />
           </div>
         </div>

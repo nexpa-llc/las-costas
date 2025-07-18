@@ -16,9 +16,9 @@
         </div>
       </div>
 
-      <img src="/assets/menu-1.jpg" class="h-full w-full" />
-      <img src="/assets/menu-2.jpg" class="h-full w-full" />
-      <img src="/assets/menu-3.jpg" class="h-full w-full" />
+      <img id="menu-1" src="/assets/menu-1.jpg" class="h-full w-full" />
+      <img id="menu-2" src="/assets/menu-2.jpg" class="h-full w-full" />
+      <img id="menu-3" src="/assets/menu-3.jpg" class="h-full w-full" />
     </div>
   </div>
 </template>

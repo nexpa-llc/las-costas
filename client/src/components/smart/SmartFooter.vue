@@ -1,12 +1,10 @@
 <script setup>
 import { useI18n } from 'vue-i18n';
 import SmartSvg from './SmartSvg.vue';
-import { useSmartLinks } from '@/composables/smart-links';
+import { SOCIAL_LINKS } from '@/assets/constants/links';
 
 const year = new Date().getFullYear();
 const { t } = useI18n({ useScope: 'global' });
-
-const { socialLinks } = useSmartLinks();
 </script>
 
 <template>
@@ -49,7 +47,7 @@ const { socialLinks } = useSmartLinks();
         <h5 class="mb-3 font-semibold">Las Costas</h5>
         <div class="flex gap-4 text-base">
           <a
-            v-for="link in socialLinks"
+            v-for="link in SOCIAL_LINKS"
             :key="link.name"
             :href="link.url"
             target="_blank"
