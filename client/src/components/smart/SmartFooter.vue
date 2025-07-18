@@ -13,7 +13,9 @@ const { socialLinks } = useSmartLinks();
   <footer>
     <hr class="my-16" />
 
-    <div class="mx-auto mb-20 grid max-w-7xl grid-cols-2 gap-3 gap-y-10 px-6">
+    <div
+      class="mx-auto mb-20 grid max-w-7xl grid-cols-2 gap-3 gap-y-10 px-6 text-sm sm:text-base"
+    >
       <div class="flex flex-col gap-3">
         <h5 class="mb-3 font-semibold">{{ t('footer.navigation') }}</h5>
         <div class="flex flex-col items-start gap-1">
