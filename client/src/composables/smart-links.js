@@ -24,17 +24,17 @@ export function useSmartLinks() {
 
   const socialLinks = [
     {
-      url: 'https://www.facebook.com/profile.php?id=100082710796984',
+      url: '/',
       name: 'Facebook',
       icon: 'facebook',
     },
     {
-      url: 'https://instagram.com/el_andariegotruck',
+      url: '/',
       name: 'Instagram',
       icon: 'instagram',
     },
     {
-      url: 'https://g.page/r/CY53oo_JlDb8EAI/review',
+      url: 'https://g.co/kgs/RLrZmyw',
       name: 'Google',
       icon: 'google',
     },

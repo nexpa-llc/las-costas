@@ -32,52 +32,53 @@ watch(showOffCanvas, (value) => {
 });
 </script>
 <template>
-  <div
-    class="bg-primary-50 sticky inset-x-0 top-0 z-40 mx-auto flex h-[60px] content-center items-center justify-between px-4 transition-all lg:h-[68px] lg:px-8 xl:px-12"
-    :class="{ 'shadow-md': scrollY > 0 }"
-  >
-    <RouterLink class="lg:ml-7" to="/">
-      <img
-        src="/andariego-nav.png"
-        alt="logo"
-        class="h-[68px] w-[68px] lg:h-[78px] lg:w-[76px]"
-      />
-    </RouterLink>
+  <div>
     <div
-      class="invisible hidden text-lg font-semibold lg:visible lg:flex lg:content-center lg:items-center lg:gap-8"
+      class="bg-base-100/75 sticky inset-x-0 top-0 z-40 mx-auto flex h-[60px] content-center items-center justify-between px-4 backdrop-blur-sm transition-all lg:h-[68px] lg:px-8 xl:px-12"
+      :class="{ 'shadow-md': scrollY > 0 }"
     >
-      <RouterLink
-        v-for="link in routeLinks"
-        :key="link.name"
-        :to="link.to"
-        class="hover:text-primary"
-        active-class="text-primary underline underline-offset-2"
-      >
-        {{ link.name }}
+      <RouterLink class="lg:ml-7" to="/">
+        <img src="/assets/logo.png" alt="logo" class="w-22 lg:w-26" />
       </RouterLink>
 
-      <a href="tel:9498060123" class="btn btn-primary">
-        {{ t('link.call') }}
-      </a>
+      <div
+        class="invisible hidden text-lg font-semibold lg:visible lg:flex lg:content-center lg:items-center lg:gap-8"
+      >
+        <RouterLink
+          v-for="link in routeLinks"
+          :key="link.name"
+          :to="link.to"
+          class="hover:text-primary"
+          active-class="text-primary underline underline-offset-2"
+        >
+          {{ link.name }}
+        </RouterLink>
+
+        <a href="tel:9495031324" class="btn btn-primary">
+          {{ t('link.call') }}
+        </a>
+      </div>
+
+      <button class="lg:hidden!" type="button" @click="showOffCanvas = !showOffCanvas">
+        <SmartTransition mode="out-in">
+          <SmartSvg v-if="showOffCanvas" src="x" class="text-4xl" />
+          <SmartSvg v-else src="bars" class="text-4xl" />
+        </SmartTransition>
+      </button>
     </div>
-    <button class="lg:hidden!" type="button" @click="showOffCanvas = !showOffCanvas">
-      <SmartTransition mode="out-in">
-        <SmartSvg v-if="showOffCanvas" src="x" />
-        <SmartSvg v-else src="bars" />
-      </SmartTransition>
-    </button>
+
     <Teleport to="body">
       <SmartTransition name="slide-from-right">
         <div
           v-if="showOffCanvas"
-          class="bg-primary-50 fixed bottom-0 left-0 top-[60px] z-40 h-screen w-screen overflow-scroll"
+          class="bg-base-100/80 fixed top-[60px] bottom-0 left-0 z-40 h-screen w-screen overflow-scroll backdrop-blur-sm"
         >
           <div class="mt-12 flex flex-col items-center gap-9 text-center font-semibold">
             <RouterLink
               v-for="link in routeLinks"
               :key="link.name"
               :to="link.to"
-              class="text-3xl hover:text-primary"
+              class="hover:text-primary text-3xl"
               active-class="text-primary underline underline-offset-2"
             >
               {{ link.name }}
@@ -93,7 +94,7 @@ watch(showOffCanvas, (value) => {
                 <SmartSvg :src="link.icon" />
               </a>
             </div>
-            <a href="tel:9498060123" class="btn btn-primary btn-lg mb-3 text-3xl">
+            <a href="tel:9495031324" class="btn btn-primary btn-lg mb-3 text-3xl">
               {{ t('link.call') }}
             </a>
             <LocaleSelector class="-ms-1 text-xl" />

@@ -6,7 +6,7 @@ import { useSmartLinks } from '@/composables/smart-links';
 const year = new Date().getFullYear();
 const { t } = useI18n({ useScope: 'global' });
 
-const { socialLinks, routeLinks } = useSmartLinks();
+const { socialLinks } = useSmartLinks();
 </script>
 
 <template>
@@ -18,26 +18,31 @@ const { socialLinks, routeLinks } = useSmartLinks();
       <h5 class="mb-3 font-semibold">{{ t('footer.navigation') }}</h5>
       <div class="flex flex-col items-start gap-1 lg:text-base">
         <RouterLink
-          v-for="link in routeLinks"
-          :key="link.name"
-          :to="link.to"
+          to="/"
           class="hover:text-primary"
           active-class="text-primary underline underline-offset-2"
         >
-          {{ link.name }}
+          {{ t('link.home') }}
         </RouterLink>
+
+        <a href="https://las-costas.square.site" class="hover:text-primary">
+          {{ t('link.menu') }}
+        </a>
+
+        <a href="tel:9495031324" class="cursor-pointer">Catering</a>
       </div>
     </div>
+
     <div class="flex flex-col gap-3">
       <h5 class="mb-3 font-semibold">{{ t('footer.information') }}</h5>
+
       <div class="flex flex-col items-start gap-1 lg:text-base">
-        <a href="tel:9498060123" class="cursor-pointer">(949) 806-0123</a>
-        <RouterLink to="/contact">
-          {{ t('footer.careers') }}
-        </RouterLink>
-        <RouterLink to="/contact">Catering</RouterLink>
+        <a href="tel:9495031324" class="cursor-pointer">(949) 503-1324</a>
+        <a href="tel:9495031324" class="cursor-pointer">{{ t('footer.careers') }}</a>
+        <a href="tel:9495031324" class="cursor-pointer">Catering</a>
       </div>
     </div>
+
     <div class="flex flex-col gap-3 md:order-first">
       <h5 class="mb-3 font-semibold">Las Costas</h5>
       <div class="flex gap-4 text-base lg:text-lg">
@@ -54,10 +59,11 @@ const { socialLinks, routeLinks } = useSmartLinks();
         </p>
       </div>
     </div>
+
     <div class="flex flex-col gap-3 md:order-first">
       <h5 class="mb-3 font-semibold">{{ t('footer.business_hours') }}</h5>
       <p class="sm:w-4/5 lg:text-base">
-        31345 Los Rios St, San Juan Capistrano, CA 92675
+        31401 Camino Capistrano #3, San Juan Capistrano, CA 92675
       </p>
       <div class="lg:text-base">
         <p>{{ t('footer.schedule') }}</p>

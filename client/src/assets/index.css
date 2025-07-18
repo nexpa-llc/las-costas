@@ -3,9 +3,9 @@
 @import 'tailwindcss';
 
 :root {
-  --color-bg-dark: oklch(14% 0.005 285.823);
-  --color-bg: oklch(27% 0.006 286.033);
-  --color-bg-light: oklch(21% 0.006 285.885);
+  --color-bg-dark: oklch(6.72% 0.0351 0deg);
+  --color-bg: oklch(6.72% 0.0351 0deg);
+  --color-bg-light: oklch(6.72% 0.0351 0deg);
 
   --color-text: oklch(100% 0 0);
   --color-text-muted: oklch(88.224% 0.0001 271.152);
@@ -22,30 +22,6 @@
   --color-warning: oklch(66% 0.179 58.318);
   --color-success: oklch(39.5% 0.0859 152deg);
   --color-info: oklch(58% 0.158 241.966);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-bg-dark: oklch(14% 0.005 285.823);
-    --color-bg: oklch(27% 0.006 286.033);
-    --color-bg-light: oklch(21% 0.006 285.885);
-
-    --color-text: oklch(100% 0 0);
-    --color-text-muted: oklch(88.224% 0.0001 271.152);
-
-    --color-highlight: oklch(80.152% 0.00009 271.152);
-
-    --color-border: oklch(64.673% 0.00007 271.152);
-    --color-border-muted: oklch(38.666% 0.00004 271.152);
-
-    --color-primary: oklch(44.1% 0.0979 161deg);
-    --color-secondary: oklch(53% 0.207 22.3deg);
-
-    --color-danger: oklch(36% 0.141 27.5deg);
-    --color-warning: oklch(66% 0.179 58.318);
-    --color-success: oklch(39.5% 0.0859 152deg);
-    --color-info: oklch(58% 0.158 241.966);
-  }
 }
 
 @plugin "daisyui/theme" {
@@ -96,6 +72,10 @@
 }
 
 @theme {
+  --color-base-100: var(--color-bg);
+  --color-base-200: var(--color-bg-dark);
+  --color-base-300: var(--color-bg-dark);
+
   --color-primary: var(--color-primary);
   --color-secondary: var(--color-secondary);
 
@@ -133,4 +113,10 @@
 body {
   min-height: 100vh;
   font-family: 'Open Sans', sans-serif;
+}
+
+@utility font-londrina {
+  font-family: 'Londrina Shadow', sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }

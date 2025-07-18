@@ -3,14 +3,14 @@ import { createRouter, createWebHistory } from 'vue-router';
 import DefaultLayout from '@/layouts/DefaultLayout.vue';
 import BlankLayout from '@/layouts/BlankLayout.vue';
 
-const HomePage = () => import('@/views/HomePage.vue');
+const Index = () => import('@/views/Index.vue');
 const PageNotFound = () => import('@/views/PageNotFound.vue');
 
 const routes = [
   {
     path: '/',
-    name: 'HomePage',
-    component: HomePage,
+    name: 'Index',
+    component: Index,
     meta: {
       layout: DefaultLayout,
     },
