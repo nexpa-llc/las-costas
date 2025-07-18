@@ -9,7 +9,7 @@ const layoutComponent = computed(() => route.meta.layout || DefaultLayout);
 </script>
 
 <template>
-  <div>
+  <div class="mx-auto max-w-xl">
     <SmartTransition name="fade" mode="out-in">
       <component :is="layoutComponent">
         <RouterView v-slot="{ Component }" class="router-view">
