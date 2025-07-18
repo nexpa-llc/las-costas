@@ -95,7 +95,7 @@ watch(showOffCanvas, (value) => {
     <SmartTransition name="slide-from-right">
       <div
         v-if="showOffCanvas"
-        class="bg-base-100/80 absolute top-[64px] bottom-0 left-0 z-40 h-screen w-full overflow-scroll pb-24 backdrop-blur-sm"
+        class="bg-base-100/80 absolute top-[64px] bottom-0 left-0 z-40 h-svh w-full overflow-scroll pb-24 backdrop-blur-sm"
       >
         <div class="mt-8 flex flex-col items-center gap-4 text-center font-semibold">
           <RouterLink

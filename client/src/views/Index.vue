@@ -10,12 +10,20 @@
         </div>
 
         <div class="flex justify-center">
-          <img
-            class="animate-bounce-scale w-1/2 duration-75"
-            src="/assets/logo.png"
-            alt="logo"
-          />
+          <img class="animate-bounce-scale w-1/2" src="/assets/logo.png" alt="logo" />
         </div>
+      </div>
+
+      <div class="w-full pb-2">
+        <div class="divider m-0"></div>
+
+        <div
+          class="font-londrina from-primary to-secondary bg-linear-to-r via-white bg-clip-text text-center text-5xl font-extrabold tracking-wide text-transparent"
+        >
+          <p>MENU</p>
+        </div>
+
+        <div class="divider m-0"></div>
       </div>
 
       <div>
@@ -61,7 +69,7 @@
 }
 
 .animate-bounce-scale {
-  animation: bounce-scale 1s ease-in-out infinite;
+  animation: bounce-scale 1.2s ease-in-out infinite;
 }
 
 .blend-gray {
@@ -77,5 +85,15 @@
 .blend-black-on-gray {
   height: 20px;
   background: linear-gradient(to bottom, #020001, #161616);
+}
+
+.text-banner {
+  background-color: var(--color-secondary);
+  color: var(--color-secondary-content);
+  text-align: center;
+  padding: 0.2em 0.7em;
+  display: inline-block;
+  position: relative;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 90%, 0 100%);
 }
 </style>
