@@ -34,32 +34,14 @@ watch(showOffCanvas, (value) => {
 <template>
   <div>
     <div
-      class="bg-base-100/75 sticky inset-x-0 top-0 z-40 mx-auto flex h-[60px] content-center items-center justify-between px-4 backdrop-blur-sm transition-all lg:h-[68px] lg:px-8 xl:px-12"
+      class="bg-base-100/75 sticky inset-x-0 top-0 z-40 mx-auto flex h-[64px] content-center items-center justify-between px-4 pt-2 backdrop-blur-sm transition-all"
       :class="{ 'shadow-md': scrollY > 0 }"
     >
-      <RouterLink class="lg:ml-7" to="/">
+      <RouterLink to="/">
         <img src="/assets/logo.png" alt="logo" class="w-22 lg:w-26" />
       </RouterLink>
 
-      <div
-        class="invisible hidden text-lg font-semibold lg:visible lg:flex lg:content-center lg:items-center lg:gap-8"
-      >
-        <RouterLink
-          v-for="link in routeLinks"
-          :key="link.name"
-          :to="link.to"
-          class="hover:text-primary"
-          active-class="text-primary underline underline-offset-2"
-        >
-          {{ link.name }}
-        </RouterLink>
-
-        <a href="tel:9495031324" class="btn btn-primary">
-          {{ t('link.call') }}
-        </a>
-      </div>
-
-      <button class="lg:hidden!" type="button" @click="showOffCanvas = !showOffCanvas">
+      <button type="button" @click="showOffCanvas = !showOffCanvas">
         <SmartTransition mode="out-in">
           <SmartSvg v-if="showOffCanvas" src="x" class="text-4xl" />
           <SmartSvg v-else src="bars" class="text-4xl" />
