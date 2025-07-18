@@ -40,7 +40,7 @@ const router = createRouter({
           resolve({
             el: to.hash,
             behavior: 'smooth',
-            top: 80, // 80 because of header
+            top: 20, // 80 because of header
           });
         }, 300);
 
