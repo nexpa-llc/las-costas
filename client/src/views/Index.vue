@@ -28,27 +28,78 @@
 
       <div>
         <img id="combos" src="/assets/menu/combos.jpg" class="h-full w-full" />
-        <div class="blend-gray" />
+
+        <div class="h-4" style="background: linear-gradient(to bottom, #151515, #111)" />
+
         <img id="mariscos" src="/assets/menu/mariscos.jpg" class="h-full w-full" />
-        <div class="blend-gray-on-black" />
+
+        <div
+          class="h-4"
+          style="background: linear-gradient(to bottom, #0f0f0f, #020001)"
+        />
+
         <img id="tacos" src="/assets/menu/tacos.jpg" class="h-full w-full" />
+
+        <div class="h-4" style="background: linear-gradient(to bottom, #111, #141414)" />
 
         <img id="caldos" src="/assets/menu/caldos.jpg" class="h-full w-full" />
 
         <img id="antojitos" src="/assets/menu/antojitos.jpg" class="h-full w-full" />
-        <div class="blend-gray-on-black" />
+
+        <div
+          class="h-4"
+          style="background: linear-gradient(to bottom, #0f0f0f, #020001)"
+        />
+
         <img id="platillos" src="/assets/menu/platillos.jpg" class="h-full w-full" />
 
+        <div
+          class="h-4"
+          style="background: linear-gradient(to bottom, #1e1e1e, #141414)"
+        />
+
         <img id="burritos" src="/assets/menu/burritos.jpg" class="h-full w-full" />
-        <div class="blend-black-on-gray" />
+
+        <div
+          class="h-4"
+          style="background: linear-gradient(to bottom, #020202, #121212)"
+        />
+
         <img id="tortas" src="/assets/menu/tortas.jpg" class="h-full w-full" />
 
+        <div
+          class="h-4"
+          style="background: linear-gradient(to bottom, #0a0a0a, #0a0a0a)"
+        />
+
         <img id="ensalada" src="/assets/menu/ensalada.jpg" class="h-full w-full" />
+
+        <div
+          class="h-4"
+          style="background: linear-gradient(to bottom, #020202, #020202)"
+        />
+
         <img id="ninos" src="/assets/menu/ninos.jpg" class="h-full w-full" />
+
+        <div
+          class="h-4"
+          style="background: linear-gradient(to bottom, #121212, #1e1e1e)"
+        />
+
         <img id="desayunos" src="/assets/menu/desayunos.jpg" class="h-full w-full" />
 
+        <div
+          class="h-4"
+          style="background: linear-gradient(to bottom, #010101, #010101)"
+        />
+
         <img id="postres" src="/assets/menu/postres.jpg" class="h-full w-full" />
-        <div class="blend-black-on-gray" />
+
+        <div
+          class="h-4"
+          style="background: linear-gradient(to bottom, #070707, #121212)"
+        />
+
         <img id="drinks" src="/assets/menu/drinks.jpg" class="h-full w-full" />
       </div>
     </div>
@@ -70,21 +121,6 @@
 
 .animate-bounce-scale {
   animation: bounce-scale 1.2s ease-in-out infinite;
-}
-
-.blend-gray {
-  height: 10px;
-  background: linear-gradient(to bottom, #1b1b1b, #161616);
-}
-
-.blend-gray-on-black {
-  height: 20px;
-  background: linear-gradient(to bottom, #161616, #020001);
-}
-
-.blend-black-on-gray {
-  height: 20px;
-  background: linear-gradient(to bottom, #020001, #161616);
 }
 
 .text-banner {
